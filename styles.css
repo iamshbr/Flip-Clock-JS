@@ -1,0 +1,100 @@
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+:before,
+:after {
+  display: none;
+  content: "";
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  background-color: #212121;
+}
+body {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+.clock__number {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  min-width: 13rem;
+  margin: 0 0.5rem;
+  background-color: #252525;
+  background-image: linear-gradient(#363636, #252525);
+  border-radius: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  font-size: 8rem;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #ffffff;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+.clock__number,
+.clock__number:before {
+  padding: 1rem;
+}
+.clock__number:before {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  content: attr(data-time);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  opacity: 0;
+  overflow: hidden;
+  transform-origin: top;
+}
+.clock__number:after {
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  border-bottom: 4px solid #212121;
+}
+.flip:before {
+  animation: flip ease-in-out 600ms -100ms;
+}
+@keyframes flip {
+  0% {
+    opacity: 0;
+    background-color: #252525;
+    color: #252525;
+    transform: rotateX(180deg);
+  }
+  15% {
+    opacity: 1;
+  }
+  90% {
+    background-color: transparent;
+    color: inherit;
+    transform: rotateX(0);
+  }
+  100% {
+    opacity: 0;
+  }
+}
